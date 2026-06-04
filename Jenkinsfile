@@ -1,5 +1,6 @@
 pipeline {
-    agent { label 'linux' }
+    agent any
+
     stages {
         stage('Test') {
             steps {
@@ -12,11 +13,6 @@ pipeline {
                     }
                 }
             }
-        }
-    }
-    post {
-        always {
-            junit 'maven/studentapp/target/surefire-reports/*.xml'
         }
     }
 }
