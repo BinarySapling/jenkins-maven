@@ -1,11 +1,17 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'maven:3.9.9-eclipse-temurin-17'
+            reuseNode true
+            args '-w /workspace'
+        }
+    }
     stages {
         stage('Test') {
             steps {
                 checkout scm
-                dir('maven\\studentapp') {
-                    bat 'mvn clean test'
+                dir('maven/studentapp') {
+                    sh 'mvn clean test'
                 }
             }
         }
