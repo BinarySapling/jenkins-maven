@@ -12,4 +12,9 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            junit 'maven/studentapp/target/surefire-reports/*.xml'
+        }
+    }
 }
